@@ -6,7 +6,8 @@ btnGetData.addEventListener('click', checkDataStorage);
 
 function checkDataStorage(){  //se checa el localstorage  
     
-
+    const users = localStorage.getItem('users');  //obtenemos los valores con la palabra clave que se le coloco 'users'
+    const usersObject = JSON.parse(users);  //se pasa a objeto
 
     if( !users ) {  //si no esta 'users' en el local storage, se inicializa la solicitud 
 
@@ -25,8 +26,7 @@ function checkDataStorage(){  //se checa el localstorage
 
 }
 
-    var users = localStorage.getItem('users');  //obtenemos los valores con la palabra clave que se le coloco 'users'
-    var usersObject = JSON.parse(users);  //se pasa a objeto
+    
     var timeDifference = lifeSpan();
     var getTimeActual = usersObject[0].createdAt;  //se obteiene el atributo createAt que es la hora en ms en que se creo 
     var differenceTime = timeDifference-getTimeActual;  
