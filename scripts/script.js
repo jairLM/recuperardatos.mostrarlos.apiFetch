@@ -2,12 +2,8 @@
 const btnGetData = document.getElementById('btn-obtener');
 
 btnGetData.addEventListener('click', checkDataStorage);
-    var users = localStorage.getItem('users');  //obtenemos los valores con la palabra clave que se le coloco 'users'
-    var usersObject = JSON.parse(users);  //se pasa a objeto
-    var timeDifference = lifeSpan();
-    var getTimeActual = usersObject[0].createdAt;  //se obteiene el atributo createAt que es la hora en ms en que se creo 
-    var differenceTime = timeDifference-getTimeActual;  
-     
+    
+
 function checkDataStorage(){  //se checa el localstorage  
     
 
@@ -29,7 +25,11 @@ function checkDataStorage(){  //se checa el localstorage
 
 }
 
-
+    var users = localStorage.getItem('users');  //obtenemos los valores con la palabra clave que se le coloco 'users'
+    var usersObject = JSON.parse(users);  //se pasa a objeto
+    var timeDifference = lifeSpan();
+    var getTimeActual = usersObject[0].createdAt;  //se obteiene el atributo createAt que es la hora en ms en que se creo 
+    var differenceTime = timeDifference-getTimeActual;  
 
 
 async function getData(){ //funcion para obtenemnos los usuarios de la api
