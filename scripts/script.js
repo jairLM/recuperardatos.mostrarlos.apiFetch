@@ -4,32 +4,39 @@ const btnGetData = document.getElementById('btn-obtener');
 btnGetData.addEventListener('click', checkDataStorage);
     
 
+
+
 function checkDataStorage(){  //se checa el localstorage  
     
+    
     const users = localStorage.getItem('users');  //obtenemos los valores con la palabra clave que se le coloco 'users'
-    const usersObject = JSON.parse(users);  //se pasa a objeto
-
     if( !users ) {  //si no esta 'users' en el local storage, se inicializa la solicitud 
 
         showUsers();
         
 
-    } else if ( differenceTime > 60000 ) {     //si la diferencia del tiempo en que se creo con la fecha actual es mayor a 1 min igual se inicializa la solitud   
+    } else if ( users ) {     //si la diferencia del tiempo en que se creo con la fecha actual es mayor a 1 min igual se inicializa la solitud   
         
-        showUsers();
+        const timeDifference = lifeSpan();
+        const usersObject = JSON.parse(users);  //se pasa a objeto
+        const getTimeActual = usersObject[0].createdAt;  //se obteiene el atributo createAt que es la hora en ms en que se creo 
+        var differenceTime = timeDifference-getTimeActual; 
+        if(differenceTime > 60000 ){
 
-    }else if ( differenceTime < 60000 ){      //si el tiempo es menor a 1 minuto se imprimen directo los datos
+        }else if ( differenceTime < 60000 ){      //si el tiempo es menor a 1 minuto se imprimen directo los datos
         
-        printCurrentData(usersObject)
+            printCurrentData(usersObject)
+        }
+
     }
 
 
 }
 
     
-    var timeDifference = lifeSpan();
-    var getTimeActual = usersObject[0].createdAt;  //se obteiene el atributo createAt que es la hora en ms en que se creo 
-    var differenceTime = timeDifference-getTimeActual;  
+    
+    
+     
 
 
 async function getData(){ //funcion para obtenemnos los usuarios de la api
