@@ -4,6 +4,7 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+    
 }
 
 .display{
@@ -12,7 +13,7 @@
 
 
 
-@media screen and ( max-width:750px ){
+@media screen and ( max-width:700px ){
 
     .display{
         display: none;

@@ -60,11 +60,11 @@ async function getData(){ //funcion para obtenemnos los usuarios de la api
 class User {        //se creo clase objeto para psarle los atributos a los objetos asi como la hora en que se crearon
 
     constructor(id, first_name, last_name, email, avatar){ //metodo contructor para User
-        this.id = id                    //atributos
-        this.firstName = first_name
-        this.lastName = last_name
-        this.email = email
-        this.image = avatar
+        this.id = id;                 //atributos
+        this.firstName = first_name;
+        this.lastName = last_name;
+        this.email = email;
+        this.image = avatar;
         this.createdAt = new Date().getTime();
     }
      
@@ -89,9 +89,10 @@ async function showUsers() {
 
 async function createUsers(){  //crear usuarios
     const users = await getData(); //se manda a llamar la funcion getData para obtener los datos de la api    
-    return users.map(({id, first_name: firstName, last_name:lastName, email, avatar:image, createAt:time})=>        
+    console.log(users);
+    return users.map(({id, first_name, last_name, email, avatar, createAt})=>        
         
-        new User (id, firstName, lastName, email, image, time ) 
+        new User (id, first_name, last_name, email, avatar, createAt ) 
         
     );   
     
@@ -101,13 +102,12 @@ async function createUsers(){  //crear usuarios
 
 function printToDom(users){  //funcion para imprimir los datos en el dom 
     
-    const impresion = users.map((user)=>`<tr>  
-                                    <th scope="row">${user.id}</th> 
-                                    <td>${user.firstName}</td> 
-                                    <td>${user.lastName}</td> 
-                                    <td>${user.email}</td> 
-                                    <td><img class="img-from-styles display" src="${user.image}" alt="${user.firstName}-image"></td> 
-                                </tr>`);   //estructura para ponerlos en el dom
+    const impresion = users.map((user)=> `<tr>
+                                            <th scope="row">${user.id}</th><td>${user.firstName}</td> 
+                                            <td>${user.lastName}</td> 
+                                            <td>${user.email}</td> 
+                                            <td><img class="img-from-styles display " src="${user.image}" alt="${user.firstName}-image"></td>
+                                        </tr>`);   //estructura para ponerlos en el dom
     
 const idDom = document.getElementById('id'); //elemento donde se colocara la estructura de los datos
     idDom.innerHTML = impresion;
@@ -127,7 +127,7 @@ printCurrentData = (data) =>{  //funcion para imprimir los datos si es que ya es
                         <td>${info.firstName}</td> 
                         <td>${info.lastName}</td> 
                         <td>${info.email}</td> 
-                        <td class="text-center align-items-center justify-content-center"><img class="img-from-styles display " src="${info.image}" alt="${info.firstName}-image">  </td> 
+                        <td><img class="img-from-styles display " src="${info.image}" alt="${info.firstName}-image">  </td> 
                      </tr>`
     }
 
