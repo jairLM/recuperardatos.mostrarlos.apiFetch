@@ -127,7 +127,7 @@ printCurrentData = (data) =>{  //funcion para imprimir los datos si es que ya es
                         <td>${info.firstName}</td> 
                         <td>${info.lastName}</td> 
                         <td>${info.email}</td> 
-                        <td><img class="img-from-styles display" src="${info.image}" alt="${info.firstName}-image">  </td> 
+                        <td class="text-center align-items-center justify-content-center"><img class="img-from-styles display " src="${info.image}" alt="${info.firstName}-image">  </td> 
                      </tr>`
     }
 
