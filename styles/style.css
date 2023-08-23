@@ -5,3 +5,19 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+
+.display{
+    display: table-cell;
+}
+
+
+
+@media screen and ( max-width:750px ){
+
+    .display{
+        display: none;
+    }  
+
+    
+    
+}

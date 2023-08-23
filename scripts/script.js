@@ -23,6 +23,8 @@ function checkDataStorage(){  //se checa el localstorage
         var differenceTime = timeDifference-getTimeActual; 
         if(differenceTime > 60000 ){
 
+            showUsers();
+
         }else if ( differenceTime < 60000 ){      //si el tiempo es menor a 1 minuto se imprimen directo los datos
         
             printCurrentData(usersObject)
@@ -75,7 +77,7 @@ function  lifeSpan(){
 
 
 
-async function showUsers(a) {
+async function showUsers() {
     const users = await createUsers(); //se guardan los objetos creados en la variable users   
     localStorage.setItem("users", JSON.stringify(users)) //se guardan los datos en el localstorage como json y se identifican con la palabra clave 'users'   
      printToDom(users); //se invoca la funcion printToDom() y le pasamos los objetos como parámetros
@@ -104,7 +106,7 @@ function printToDom(users){  //funcion para imprimir los datos en el dom
                                     <td>${user.firstName}</td> 
                                     <td>${user.lastName}</td> 
                                     <td>${user.email}</td> 
-                                    <td><img class="img-from-styles" src="${user.image}" alt="${user.firstName}-image"></td> 
+                                    <td><img class="img-from-styles display" src="${user.image}" alt="${user.firstName}-image"></td> 
                                 </tr>`);   //estructura para ponerlos en el dom
     
 const idDom = document.getElementById('id'); //elemento donde se colocara la estructura de los datos
@@ -125,7 +127,7 @@ printCurrentData = (data) =>{  //funcion para imprimir los datos si es que ya es
                         <td>${info.firstName}</td> 
                         <td>${info.lastName}</td> 
                         <td>${info.email}</td> 
-                        <td><img class="img-from-styles" src="${info.image}" alt="${info.firstName}-image">  </td> 
+                        <td><img class="img-from-styles display" src="${info.image}" alt="${info.firstName}-image">  </td> 
                      </tr>`
     }
 
